@@ -30,4 +30,8 @@ export class AppComponent {
   ];
 
   currentPage = 0;
+
+  getClass() {
+    // const classes = [];
+  }
 }
