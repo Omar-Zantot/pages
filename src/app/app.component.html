@@ -3,13 +3,16 @@
     <li class="page-item" [ngClass]="{ disabled: currentPage == 0 }">
       <a class="page-link" (click)="currentPage = currentPage - 1">Prev</a>
     </li>
-    <li
-      class="page-item"
-      [ngClass]="{ active: i == currentPage }"
-      *ngFor="let img of images; let i = index"
-    >
-      <a class="page-link" (click)="currentPage = i">{{ i + 1 }}</a>
-    </li>
+    <ng-container *ngFor="let img of images; let i = index">
+      <li
+        class="page-item"
+        [ngClass]="{ active: i == currentPage }"
+        *ngIf="checkIndex(i)"
+      >
+        <a class="page-link" (click)="currentPage = i">{{ i + 1 }}</a>
+      </li>
+    </ng-container>
+
     <li
       class="page-item"
       [ngClass]="{ disabled: currentPage == images.length - 1 }"
@@ -19,6 +22,17 @@
   </ul>
 </nav>
 
+<div>
+  <h4>
+    {{ images[currentPage].title }}
+  </h4>
+  <img [src]="images[currentPage].url" alt="img" />
+</div>
+
 <!--
   TODO : change current page  when clicking and pressing next and previous
+  TODO: showing images based on currentPage value
+  TODO: issue with the design
+  ?  use ng-content to avoid multiple directives in the same html element
+  ! (invisible elements) : use it to get around that role only one structural directive per element
  -->

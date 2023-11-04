@@ -31,7 +31,7 @@ export class AppComponent {
 
   currentPage = 0;
 
-  getClass() {
-    // const classes = [];
+  checkIndex(index: number) {
+    return Math.abs(this.currentPage - index) < 3;
   }
 }
