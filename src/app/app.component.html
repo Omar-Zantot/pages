@@ -23,11 +23,18 @@
 </nav>
 
 <div>
-  <h4>
+  <h4 [appClass]="'gray'">
     {{ images[currentPage].title }}
   </h4>
   <img [src]="images[currentPage].url" alt="img" />
 </div>
+
+<!-- <div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">current page is one</div>
+  <div *ngSwitchCase="2">current page is three</div>
+  <div *ngSwitchCase="3">current page is four</div>
+  <div *ngSwitchDefault>current page is unknown</div>
+</div> -->
 
 <!--
   TODO : change current page  when clicking and pressing next and previous
@@ -36,3 +43,14 @@
   ?  use ng-content to avoid multiple directives in the same html element
   ! (invisible elements) : use it to get around that role only one structural directive per element
  -->
+
+<!--
+  * Communicate from parent to child
+  &[a] - Parent Component template
+        <app-card [title]="'someTitle'"></app-card>
+  &[b] - Child Component class
+        import {input} from 'angular'
+        class ChildComponent{
+          @Input title:string;
+        }
+  -->
